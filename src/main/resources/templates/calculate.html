@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculate</title>
+</head>
+<body>
+
+<form th:method="GET" th:action="@{/calculate}" th:object="${vacationpay}">
+    <label for="wage">Enter your wage:</label>
+    <input type="text" th:field="*{wage}" id="wage"/>
+    <div style="color: red" th:if="${#fields.hasErrors('wage')}" th:errors="*{wage}">Wage error</div>
+    <label for="days">Enter your vacation days:</label>
+    <input type="text" th:field="*{days}" id="days">
+    <div style="color: red" th:if="${#fields.hasErrors('days')}" th:errors="*{days}">Days error</div>
+    <p>Your vacation pay: <span th:text="${vacationpay.getVacationPay()}"/> </p>
+    <br/>
+    <input type="submit" value="Сalculate">
+</form>
+
+</body>
+</html>
